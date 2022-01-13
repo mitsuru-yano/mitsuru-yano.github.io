@@ -1,0 +1,78 @@
+body{
+padding: 10px;
+margin: 0;
+box-sizing: border-box;
+}
+
+.logo {
+    height: 60px;
+}
+
+.title {
+    font-size: 38px;
+    color: red;
+}
+
+.short-text {
+    max-width: 120px;
+    font-size: 19px;
+    background-color: blue;
+    color: white;
+    margin-bottom: 120px;
+    
+}
+
+.second-text {
+    font-size: 20px;
+    letter-spacing: -0.35px;
+}
+
+.blue {
+    color: blue;
+}
+
+h2 {
+    font-size: 30px;
+    letter-spacing: -0.7px;
+}
+
+.green-bg {
+    background-color: green;
+}
+
+.p-small {
+    padding:  5px 10px;
+}
+
+.p-large {
+    padding: 50px 55px;
+}
+
+.list{
+    padding-left: 50px;
+
+}
+
+.list-item {
+    border: 1px solid black;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
+
+.input-field {
+    font-size: 16px;
+    width: 190px;
+}
+.form-btn {
+    font-size: 16px;
+    width: 150px;
+}
+
+.mb-small {
+    margin-bottom: 37px;
+}
+
+.centered-text {
+    width: 660px;
+    text-align: center;
+}
