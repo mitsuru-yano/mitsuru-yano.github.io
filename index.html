@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Carte Banner test</title>
+		<link rel="stylesheet" href="./styles/reboot.css" />
+		<link rel="stylesheet" href="./styles/index.css" />
+		<script type="importmap">
+			{
+				"imports": {
+					"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
+
+		<script type="module">
+			import {createApp, ref, onMounted, onUnmounted, reactive} from 'vue'
+			import RestaurantCard from './components/restaurantCard.js'
+
+			const app = createApp({
+				components: {RestaurantCard},
+				setup() {
+					const breakpoints = [
+						{width: 540, count: 1},
+						{width: 768, count: 2},
+						{width: 1241, count: 3}
+					]
+
+					const nextSlide = () => ++currSlide.value
+					const prevSlide = () => --currSlide.value
+					const handleWindowSizeChange = () => {
+						slidesOnScreen.value = useSlidesCount()
+						currSlide.value = 0
+					}
+					const useSlidesCount = () =>
+						breakpoints.find(({width, count}) => window.innerWidth < width)
+							?.count || 4
+
+					const restaurants = ref(null)
+					const currSlide = ref(0)
+					const slidesCount = ref(null)
+					const slidesOnScreen = ref(useSlidesCount())
+
+					onMounted(async () => {
+						window.addEventListener('resize', handleWindowSizeChange)
+						restaurants.value = await fetch('./data/index.json').then(
+							(response) => response.json()
+						)
+						slidesCount.value = restaurants.value.length
+					})
+
+					onUnmounted(() => {
+						window.removeEventListener('resize', handleWindowSizeChange)
+					})
+
+					return {
+						restaurants,
+						currSlide,
+						slidesCount,
+						nextSlide,
+						prevSlide,
+						slidesOnScreen
+					}
+				},
+				template: `
+					<section class="c-banner" v-bind:style="{ 'background-position':  100 * currSlide + '% 114%' }">
+						<div class="c-banner__heading">
+							<a class="c-banner__heading-title" href="https://carte.by/vitebsk/" target="_blank">
+								Бизнес-ланчи в Витебске
+							</a>
+							<a class="c-banner__heading-logo" href="https://carte.by/vitebsk/" target="_blank">
+								<img src="./images/carte.svg" />
+							</a>
+							<div class="navigation">
+								<button @click="prevSlide()" class="navigation__arrow navigation__arrow--left"  v-bind:class="{ disabled: currSlide === 0 }" ></button>
+								<button @click="nextSlide()" class="navigation__arrow navigation__arrow--right" v-bind:class="{ disabled: currSlide === slidesCount - slidesOnScreen}" ></button>
+							</div>
+						</div>
+						<div v-if="restaurants" class="c-banner__list">
+							<div  class="c-banner__list-scroll" v-bind:style="{ transform: 'translateX(' + -100/slidesOnScreen * currSlide + '%)'}">
+								<RestaurantCard v-for="item in restaurants" :key="item.id" :item="item" ></RestaurantCard>
+							</div>
+						</div>
+					</section>
+					`
+			})
+			app.mount('#app')
+		</script>
+	</body>
+</html>

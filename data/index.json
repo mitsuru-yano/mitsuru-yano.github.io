@@ -1,0 +1,153 @@
+[
+	{
+		"title": "Ностальгия",
+		"url": "https://nostalgia.vitebsk.biz/",
+		"address": "Витебск, пр-т Московский, 86",
+		"schedule": "12:00 − 16:00",
+		"dishes": [
+			{
+				"title": "Борщ «Украинский» со сметаной",
+				"price": ""
+			},
+			{
+				"title": "Отбивная «Рябушка», рожки отварные",
+				"price": ""
+			},
+			{
+				"title": "Салат «Слоёный»",
+				"price": ""
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2020/03/11/c9fbfc8f431eab848379ad1b8b70b571_p.jpg\")",
+		"totalPrice": "9,95 р"
+	},
+	{
+		"title": "Город",
+		"url": "https://gorod.vitebsk.biz/",
+		"address": "Витебск, ул. Смоленская, 3/1",
+		"dishes": [
+			{
+				"title": "Салат из редьки со свежим огурцом",
+				"price": "2,60"
+			},
+			{
+				"title": "Суп картофельный с фрикадельками",
+				"price": "2,20"
+			},
+			{
+				"title": "Скумбрия жареная на гриле, каша перловая с шампиньонами",
+				"price": "8,30"
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2017/03/22/gorod_p.jpg\")",
+		"totalPrice": "13,10 р"
+	},
+	{
+		"title": "Le Bon",
+		"url": "https://lebon.vitebsk.biz/",
+		"address": "Витебск, ул. Ленина, 48",
+		"dishes": [
+			{
+				"title": "Суп из чечевицы",
+				"price": ""
+			},
+			{
+				"title": "Блинчик с салями",
+				"price": ""
+			},
+			{
+				"title": "Морс",
+				"price": ""
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2023/11/27/7d843dc3d4a944ccd8beed3b7af06937_p.jpg\")",
+		"totalPrice": "10,00 р"
+	},
+	{
+		"title": "Nimbus Lounge Bar",
+		"url": "https://nimbus-bar.vitebsk.biz/",
+		"address": "Витебск, пр-т Черняховского, 27",
+		"schedule": "12:00 − 16:00",
+		"dishes": [
+			{
+				"title": "Салат «Цезарь» мини",
+				"price": "3,00"
+			},
+			{
+				"title": "Солянка",
+				"price": "3,00"
+			},
+			{
+				"title": "Бифштекс с картофельным пюре",
+				"price": "6,00"
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2019/09/30/fb2ef13ad97b60fe7027429066229c62_p.jpg\")",
+		"totalPrice": "12,00 р"
+	},
+	{
+		"title": "Zdoba",
+		"url": "https://zdoba.vitebsk.biz/",
+		"address": "Витебск, пр-т Московский, 20",
+		"dishes": [
+			{
+				"title": "Крем-суп на выбор",
+				"price": ""
+			},
+			{
+				"title": "Салат «Морской» на выбор",
+				"price": ""
+			},
+			{
+				"title": "Чай или морс",
+				"price": ""
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2020/08/20/32aec56d6ef84a53b8720aa3bc909cb5_p.jpg\")",
+		"totalPrice": "7,80 р"
+	},
+	{
+		"title": "Губернский трактир",
+		"url": "https://gubernskiy.vitebsk.biz/",
+		"address": "Витебск, ул. Комсомольская, 11/5",
+		"schedule": "12:00 − 15:00",
+		"dishes": [
+			{
+				"title": "Салат из морской капусты со снежным крабом",
+				"price": "2,50"
+			},
+			{
+				"title": "Суп перловый с грибами со сметаной и крутонами",
+				"price": "3,00"
+			},
+			{
+				"title": "Бифштекс «Смак», картофель отварной с зеленью",
+				"price": "4,70"
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2017/06/22/dsc-9035_p.jpg\")",
+		"totalPrice": "10,20 р"
+	},
+	{
+		"title": "Лямус",
+		"url": "https://liamus.vitebsk.biz/",
+		"address": "Витебск, пр-т Победы, 1",
+		"schedule": "12:00 − 16:00",
+		"dishes": [
+			{
+				"title": "Салат-коктейль «Свежесть»",
+				"price": ""
+			},
+			{
+				"title": "Сливочный суп с куриными фрикадельками",
+				"price": ""
+			},
+			{
+				"title": "Котлета «По-домашнему», картофельное пюре с маринованным огурцом",
+				"price": ""
+			}
+		],
+		"imagePath": "url(\"https://carte.by/source/photos/2015/11/30/liamus_p.jpg\")",
+		"totalPrice": "16,00 р"
+	}
+]
