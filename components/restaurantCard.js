@@ -1,4 +1,4 @@
-import {toRefs, toRef} from 'vue'
+import {toRefs} from 'vue'
 
 export default {
 	props: {
@@ -21,8 +21,6 @@ export default {
 		}
 	},
 	template: `
-	<!--html-->
-
 	<div class="c-banner__item">
 		<div class="c-banner__item-heading">
 			<a v-bind:href="url" class="c-banner__item-heading-content" v-bind:style="{ backgroundImage: imagePath }">
