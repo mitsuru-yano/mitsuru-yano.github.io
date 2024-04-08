@@ -6,12 +6,11 @@ export default {
 		item: Object
 	},
 	setup(props) {
-		const {id, title, address, url, schedule, dishes, imagePath, totalPrice} = toRefs(
+		const {title, address, url, schedule, dishes, imagePath, totalPrice} = toRefs(
 			props.item
 		)
 
 		return {
-			id,
 			title,
 			address,
 			url,
@@ -33,7 +32,7 @@ export default {
 			</a>
 		</div>
 		<ul class="restaurant-item__menu">
-			<li class="restaurant-item__dish" v-for="dish in dishes">
+			<li class="restaurant-item__dish" v-for="dish in dishes" :key="dish.id">
 				<span class="restaurant-item__dish-title" :class="{ active: dish.price }">{{dish.title}}</span>
 				<span v-if="dish.price" class="restaurant-item__dish-price">{{dish.price}}</span>
 			</li>
