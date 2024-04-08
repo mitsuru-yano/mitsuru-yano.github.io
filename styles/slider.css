@@ -1,0 +1,19 @@
+.slider {
+	transition: background-position 0.3s ease-out;
+	background: url(/images/image.svg);
+	background-repeat: repeat-x, repeat;
+	display: flex;
+	overflow: hidden;
+	position: relative;
+}
+
+.slider__container {
+	white-space: nowrap;
+	width: 100%;
+	transition: transform 0.3s;
+}
+
+.slider__item {
+	display: inline-block;
+	vertical-align: top;
+}

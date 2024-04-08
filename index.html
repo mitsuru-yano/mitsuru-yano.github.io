@@ -19,77 +19,51 @@
 		<div id="app"></div>
 
 		<script type="module">
-			import {createApp, ref, onMounted, onUnmounted, reactive} from 'vue'
+			import {createApp, ref, onMounted} from 'vue'
 			import RestaurantCard from './components/restaurantCard.js'
+			import CarteBanner from './components/carteBanner.js'
+			import Slider from './components/slider.js'
+			import Navigation from './components/navigation.js'
 
-			const app = createApp({
-				components: {RestaurantCard},
+			createApp({
 				setup() {
-					const breakpoints = [
-						{width: 540, count: 1},
-						{width: 768, count: 2},
-						{width: 1241, count: 3}
-					]
-
-					const nextSlide = () => ++currSlide.value
-					const prevSlide = () => --currSlide.value
-					const handleWindowSizeChange = () => {
-						slidesOnScreen.value = useSlidesCount()
-						currSlide.value = 0
-					}
-					const useSlidesCount = () =>
-						breakpoints.find(({width, count}) => window.innerWidth < width)
-							?.count || 4
-
 					const restaurants = ref(null)
-					const currSlide = ref(0)
-					const slidesCount = ref(null)
-					const slidesOnScreen = ref(useSlidesCount())
+					const portalID = ref('carte-nav')
 
 					onMounted(async () => {
-						window.addEventListener('resize', handleWindowSizeChange)
-						restaurants.value = await fetch('./data/index.json').then(
-							(response) => response.json()
-						)
-						slidesCount.value = restaurants.value.length
-					})
+						try {
+							const res = await fetch('./data/index.json')
 
-					onUnmounted(() => {
-						window.removeEventListener('resize', handleWindowSizeChange)
+							if (!res.ok) {
+								throw Error(res.statusText)
+							}
+
+							const data = await res.json()
+							restaurants.value = data
+						} catch (err) {
+							console.error(err)
+						}
 					})
 
 					return {
 						restaurants,
-						currSlide,
-						slidesCount,
-						nextSlide,
-						prevSlide,
-						slidesOnScreen
+						portalID
 					}
 				},
 				template: `
-					<section class="c-banner" v-bind:style="{ 'background-position':  100 * currSlide + '% 114%' }">
-						<div class="c-banner__heading">
-							<a class="c-banner__heading-title" href="https://carte.by/vitebsk/" target="_blank">
-								Бизнес-ланчи в Витебске
-							</a>
-							<a class="c-banner__heading-logo" href="https://carte.by/vitebsk/" target="_blank">
-								<img src="./images/carte.svg" />
-							</a>
-							<div class="navigation">
-								<button @click="prevSlide()" class="navigation__arrow navigation__arrow--left"  v-bind:class="{ disabled: currSlide === 0 }" ></button>
-								<button @click="nextSlide()" class="navigation__arrow navigation__arrow--right" v-bind:class="{ disabled: currSlide === slidesCount - slidesOnScreen}" ></button>
-							</div>
-						</div>
-						<div v-if="restaurants" class="c-banner__list">
-							<div  class="c-banner__list-scroll" v-bind:style="{ transform: 'translateX(' + -100/slidesOnScreen * currSlide + '%)'}">
-								<RestaurantCard v-for="item in restaurants" :key="item.id" :item="item" ></RestaurantCard>
-							</div>
-						</div>
-					</section>
-					`
+				<link rel="stylesheet" href="./styles/index.css" />
+				<CarteBanner headingText="Бизнес-ланчи в Витебске" headingLink="https://carte.by/vitebsk/" imageSource="./images/carte.svg" :portalId="portalID">
+					<template v-slot:content>
+						<Slider :items="restaurants" componentName="RestaurantCard" :navigationContainerID="portalID"></Slider>
+					</template>
+				</CarteBanner>
+				`
 			})
-			app.mount('#app')
+				.component('RestaurantCard', RestaurantCard)
+				.component('CarteBanner', CarteBanner)
+				.component('Slider', Slider)
+				.component('Navigation', Navigation)
+				.mount('#app')
 		</script>
 	</body>
 </html>

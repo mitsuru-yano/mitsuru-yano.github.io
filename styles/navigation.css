@@ -1,0 +1,43 @@
+.navigation {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.navigation__arrow {
+	display: inline-block;
+	padding: 25px 9px;
+	cursor: pointer;
+	margin-top: -20px;
+	margin-bottom: -20px;
+	background: transparent;
+	border: none;
+}
+
+.navigation__arrow:hover::before {
+	opacity: 1;
+	border-top-color: red;
+	border-left-color: red;
+}
+
+.navigation__arrow.disabled {
+	pointer-events: none;
+	opacity: 0.2;
+}
+
+.navigation__arrow::before {
+	content: '';
+	display: block;
+	min-width: 27px;
+	min-height: 27px;
+	border-top: 3px solid black;
+	border-left: 3px solid black;
+	transition: 0.3s;
+}
+
+.navigation__arrow--left::before {
+	transform: rotate(-45deg);
+}
+
+.navigation__arrow--right::before {
+	transform: rotate(135deg);
+}

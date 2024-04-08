@@ -1,6 +1,7 @@
 import {toRefs} from 'vue'
 
 export default {
+	name: 'RestaurantCard',
 	props: {
 		item: Object
 	},
@@ -21,21 +22,23 @@ export default {
 		}
 	},
 	template: `
-	<div class="c-banner__item">
-		<div class="c-banner__item-heading">
-			<a v-bind:href="url" class="c-banner__item-heading-content" v-bind:style="{ backgroundImage: imagePath }">
-				<span class="c-banner__item-background"></span>
-				<div v-if="title" class="c-banner__item-title">{{title}}</div>
-				<div v-if="address" class="c-banner__item-address">{{address}}</div>
-				<div v-if="schedule" class="c-banner__item-schedule">{{schedule}}</div>
+	<link rel="stylesheet" href="./styles/restaurant-item.css" />
+	<div class="restaurant-item">
+		<div class="restaurant-item__heading">
+			<a :href="url" class="restaurant-item__heading-content" :style="{ backgroundImage: imagePath }">
+				<span class="restaurant-item__background"></span>
+				<div v-if="title" class="restaurant-item__title">{{title}}</div>
+				<div v-if="address" class="restaurant-item__address">{{address}}</div>
+				<div v-if="schedule" class="restaurant-item__schedule">{{schedule}}</div>
 			</a>
 		</div>
-		<ul class="c-banner__item-menu">
-			<li class="c-banner__item-dish" v-for="dish in dishes">
-				<span class="c-banner__item-dish-title" v-bind:class="{ active: dish.price }">{{dish.title}}</span>
-				<span v-if="dish.price" class="c-banner__item-dish-price">{{dish.price}}</span>
+		<ul class="restaurant-item__menu">
+			<li class="restaurant-item__dish" v-for="dish in dishes">
+				<span class="restaurant-item__dish-title" :class="{ active: dish.price }">{{dish.title}}</span>
+				<span v-if="dish.price" class="restaurant-item__dish-price">{{dish.price}}</span>
 			</li>
 		</ul>
-		<span class="c-banner__item-total">{{totalPrice}}</span>
-	</div>`
+		<span class="restaurant-item__total">{{totalPrice}}</span>
+	</div>
+	`
 }
