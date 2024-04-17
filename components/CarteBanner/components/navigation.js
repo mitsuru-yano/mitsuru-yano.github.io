@@ -21,7 +21,6 @@ export default {
 		return {disableNextBtn, disablePrevBtn}
 	},
 	template: `
-    <link rel="stylesheet" href="./styles/navigation.css" />
 	<div class="navigation">
 		<button @click="prevSlide()" class="navigation__arrow navigation__arrow--left"  :class="{ disabled: disablePrevBtn }"></button>
 		<button @click="nextSlide()" class="navigation__arrow navigation__arrow--right" :class="{ disabled: disableNextBtn }"></button>

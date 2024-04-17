@@ -5,8 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Carte Banner test</title>
+
 		<link rel="stylesheet" href="./styles/reboot.css" />
 		<link rel="stylesheet" href="./styles/index.css" />
+
 		<script type="importmap">
 			{
 				"imports": {
@@ -19,51 +21,13 @@
 		<div id="app"></div>
 
 		<script type="module">
-			import {createApp, ref, onMounted} from 'vue'
-			import RestaurantCard from './components/restaurantCard.js'
-			import CarteBanner from './components/carteBanner.js'
-			import Slider from './components/slider.js'
-			import Navigation from './components/navigation.js'
+			import {createApp} from 'vue'
+			import CarteBanner from './components/CarteBanner/index.js'
 
 			createApp({
-				setup() {
-					const restaurants = ref(null)
-					const portalID = ref('carte-nav')
-
-					onMounted(async () => {
-						try {
-							const res = await fetch('./data/index.json')
-
-							if (!res.ok) {
-								throw Error(res.statusText)
-							}
-
-							const data = await res.json()
-							restaurants.value = data
-						} catch (err) {
-							console.error(err)
-						}
-					})
-
-					return {
-						restaurants,
-						portalID
-					}
-				},
-				template: `
-				<link rel="stylesheet" href="./styles/index.css" />
-				<CarteBanner headingText="Бизнес-ланчи в Витебске" headingLink="https://carte.by/vitebsk/" imageSource="./images/carte.svg" :portalId="portalID">
-					<template v-slot:content>
-						<Slider :items="restaurants" componentName="RestaurantCard" :navigationContainerID="portalID"></Slider>
-					</template>
-				</CarteBanner>
-				`
-			})
-				.component('RestaurantCard', RestaurantCard)
-				.component('CarteBanner', CarteBanner)
-				.component('Slider', Slider)
-				.component('Navigation', Navigation)
-				.mount('#app')
+				components: {CarteBanner},
+				template: `<CarteBanner relativePath="./components/CarteBanner/"></CarteBanner>`
+			}).mount('#app')
 		</script>
 	</body>
 </html>

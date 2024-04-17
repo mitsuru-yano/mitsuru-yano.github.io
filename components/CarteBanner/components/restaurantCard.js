@@ -21,7 +21,6 @@ export default {
 		}
 	},
 	template: `
-	<link rel="stylesheet" href="./styles/restaurant-item.css" />
 	<div class="restaurant-item">
 		<div class="restaurant-item__heading">
 			<a :href="url" class="restaurant-item__heading-content" :style="{ backgroundImage: imagePath }">

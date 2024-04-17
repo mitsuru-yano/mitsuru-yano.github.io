@@ -1,14 +1,19 @@
 import {toRefs, onMounted, onUnmounted, ref, computed} from 'vue'
+import Navigation from './navigation.js'
+import RestaurantCard from './restaurantCard.js'
 
 export default {
 	name: 'Slider',
+	components: {
+		Navigation,
+		RestaurantCard
+	},
 	props: {
 		items: Array,
-		componentName: String,
 		navigationContainerID: String
 	},
 	setup(props) {
-		const {items, componentName, navigationContainerID} = toRefs(props)
+		const {items, navigationContainerID} = toRefs(props)
 		const isMounted = ref(false)
 		const currSlide = ref(0)
 		const breakpoints = [
@@ -78,7 +83,6 @@ export default {
 		return {
 			items,
 			isMounted,
-			componentName,
 			currSlide,
 			nextSlide,
 			prevSlide,
@@ -93,14 +97,13 @@ export default {
 		}
 	},
 	template: `
-    <link rel="stylesheet" href="./styles/slider.css" />
 	<teleport v-if="isMounted && navigationContainerID" :to="'#'+navigationContainerID">
 		<Navigation @nextSlide="nextSlide" @prevSlide="prevSlide" :disableNextBtn="disableNextBtn" :disablePrevBtn="disablePrevBtn"></Navigation>
 	</teleport>
     <div v-if="items" class="slider" :style="{ 'background-position': backgroundOffset }">
 		<div class="slider__container" :style="{ transform: sliderOffset}">
 			<div class="slider__item" v-for="item in items" :key="item.id" :style="{ 'width': slideWidth }">
-				<component :is="componentName" :item="item"></component>
+				<RestaurantCard :item="item"></RestaurantCard>
 			</div>
 		</div>
 	</div>

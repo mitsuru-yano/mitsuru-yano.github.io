@@ -1,6 +1,6 @@
 .slider {
 	transition: background-position 0.3s ease-out;
-	background: url(/images/image.svg);
+	background: url(../images/image.svg);
 	background-repeat: repeat-x, repeat;
 	display: flex;
 	overflow: hidden;
