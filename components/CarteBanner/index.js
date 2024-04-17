@@ -55,8 +55,6 @@ export default {
 	},
 
 	template: `
-	<!--html-->
-
 	<link rel="stylesheet" :href="cssUrl">
 	<section class="c-banner">
 	    <div class="c-banner__heading">
@@ -70,6 +68,5 @@ export default {
 		</div>
 		<Slider :items="restaurants" componentName="RestaurantCard" :navigationContainerID="portalID"></Slider>
 	</section>
-	<!--!html-->
     `
 }
